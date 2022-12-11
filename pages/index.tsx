@@ -3,44 +3,15 @@ import ReactEcharts from "echarts-for-react";
 import { Responsive, WidthProvider } from "react-grid-layout";
 import layout from "../configs/layout.config";
 import styles from "../styles/Home.module.scss";
+import {
+  defaultRGLBreakpoints,
+  defaultRGLBreakpointWiseColumns,
+} from "../configs/breakpoint.config";
+import { option2, option1 } from "../dummy-data";
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
-export default function Home() {
-  const option = {
-    xAxis: {
-      type: "category",
-      data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-    },
-    yAxis: {
-      type: "value",
-    },
-    series: [
-      {
-        data: [120, 200, 150, 80, 70, 110, 130],
-        type: "bar",
-      },
-    ],
-  };
-
-  const option2 = {
-    xAxis: {
-      type: "category",
-      boundaryGap: false,
-      data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-    },
-    yAxis: {
-      type: "value",
-    },
-    series: [
-      {
-        data: [820, 932, 901, 934, 1290, 1330, 1320],
-        type: "line",
-        areaStyle: {},
-      },
-    ],
-  };
-
+const Home = () => {
   const handleBreakPointChange = (newBreakpoint: string, newCols: number) => {
     console.log(newBreakpoint, newCols);
   };
@@ -68,12 +39,12 @@ export default function Home() {
           onLayoutChange={handleLayoutChange}
           isDraggable
           isResizable
-          breakpoints={{ lg: 1280, md: 992, sm: 767, xs: 480, xxs: 0 }}
-          cols={{ lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 }}
+          breakpoints={defaultRGLBreakpoints}
+          cols={defaultRGLBreakpointWiseColumns}
         >
           {layout.lg.map((item, index) => (
-            <div key={item.i} style={{ border: "1px" }}>
-              <ReactEcharts option={index % 2 === 0 ? option : option2} />
+            <div key={item.i}>
+              <ReactEcharts option={index % 2 === 0 ? option1 : option2} />
             </div>
           ))}
         </ResponsiveGridLayout>
@@ -82,4 +53,6 @@ export default function Home() {
       <footer className={styles.footer}></footer>
     </div>
   );
-}
+};
+
+export default Home;
