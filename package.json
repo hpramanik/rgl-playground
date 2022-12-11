@@ -27,6 +27,48 @@
     "typescript": "4.9.4"
   },
   "devDependencies": {
-    "@types/react-grid-layout": "^1.3.2"
+    "@trivago/prettier-plugin-sort-imports": "^4.0.0",
+    "@types/react-grid-layout": "^1.3.2",
+    "eslint-config-prettier": "^8.5.0",
+    "prettier": "^2.8.1"
+  },
+  "vsc-organize-imports": {
+    "orderSpecifiers": true,
+    "orderSpecifiersAsSingleLine": true,
+    "baseUrl": "src",
+    "emptyLinesAfterImports": 1,
+    "emptyLinesBetweenFilledGroups": 1,
+    "groups": [
+      {
+        "groups": [
+          "global"
+        ],
+        "sortBy": "path",
+        "emptyLines": true
+      },
+      {
+        "groups": [
+          "absolute"
+        ],
+        "sortBy": "path",
+        "emptyLines": true
+      },
+      {
+        "groups": [
+          "relative"
+        ],
+        "sortBy": "path",
+        "emptyLines": true
+      },
+      {
+        "groups": [
+          "globalDirect",
+          "absoluteDirect",
+          "relativeDirect"
+        ],
+        "sortBy": "path",
+        "emptyLines": true
+      }
+    ]
   }
 }

@@ -1,13 +1,14 @@
-import Head from "next/head";
-import ReactEcharts from "echarts-for-react";
-import { Responsive, WidthProvider } from "react-grid-layout";
-import layout from "../configs/layout.config";
-import styles from "../styles/Home.module.scss";
+import ReactEcharts from 'echarts-for-react';
+import Head from 'next/head';
+import { Responsive, WidthProvider } from 'react-grid-layout';
+
 import {
-  defaultRGLBreakpoints,
   defaultRGLBreakpointWiseColumns,
-} from "../configs/breakpoint.config";
-import { option2, option1 } from "../dummy-data";
+  defaultRGLBreakpoints,
+} from '../configs/breakpoint.config';
+import layout from '../configs/layout.config';
+import { option1, option2 } from '../dummy-data';
+import styles from '../styles/Home.module.scss';
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
@@ -18,7 +19,7 @@ const Home = () => {
 
   const handleLayoutChange = (
     currentLayout: ReactGridLayout.Layout[],
-    allLayouts: ReactGridLayout.Layouts
+    allLayouts: ReactGridLayout.Layouts,
   ) => {
     console.log(currentLayout, allLayouts);
   };
