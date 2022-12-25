@@ -6,7 +6,7 @@ import {
   defaultRGLBreakpointWiseColumns,
   defaultRGLBreakpoints,
 } from '../configs/breakpoint.config';
-import layout from '../configs/layout.config';
+import { traditionalLayout } from '../configs/landing-layouts/traditional-layout';
 import { option1, option2 } from '../dummy-data';
 import styles from '../styles/Home.module.scss';
 
@@ -35,7 +35,7 @@ const Home = () => {
       <main className={styles.main}>
         <ResponsiveGridLayout
           className="layout"
-          layouts={layout}
+          layouts={traditionalLayout}
           onBreakpointChange={handleBreakPointChange}
           onLayoutChange={handleLayoutChange}
           isDraggable
@@ -43,9 +43,21 @@ const Home = () => {
           breakpoints={defaultRGLBreakpoints}
           cols={defaultRGLBreakpointWiseColumns}
         >
-          {layout.lg.map((item, index) => (
-            <div key={item.i}>
-              <ReactEcharts option={index % 2 === 0 ? option1 : option2} />
+          {traditionalLayout.lg.map((item, index) => (
+            <div key={item.i} style={{ width: '100%', height: '100%' }}>
+              <div style={{ textAlign: 'center', maxWidth: '100%' }}>
+                {item.i}
+              </div>
+              <div style={{ padding: '2px', maxWidth: '100%', height: '100%' }}>
+                <ReactEcharts
+                  lazyUpdate
+                  option={index % 2 === 0 ? option1 : option2}
+                  style={{
+                    height: '100%',
+                    width: '100%',
+                  }}
+                />
+              </div>
             </div>
           ))}
         </ResponsiveGridLayout>

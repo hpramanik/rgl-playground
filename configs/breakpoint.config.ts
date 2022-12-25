@@ -7,8 +7,8 @@ export const defaultRGLBreakpoints = {
 };
 
 export const defaultRGLBreakpointWiseColumns = {
-  lg: 12,
-  md: 10,
+  lg: 16,
+  md: 16,
   sm: 6,
   xs: 4,
   xxs: 2,
